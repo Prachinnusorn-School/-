@@ -1,0 +1,329 @@
+/* พื้นฐานทั่วไป */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Prompt', sans-serif;
+    background-color: #fdfcfc; /* สีพื้นหลังเว็บ ถ้าอยากให้ขาวจั๊วะเปลี่ยนเป็น #ffffff */
+    color: #444;
+}
+
+/* Header แถบด้านบน */
+header {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 8%;
+    z-index: 1000;
+}
+
+.logo {
+    font-family: 'Dancing Script', cursive;
+    font-size: 35px; /* ขนาดตัวอักษรชื่อบ่าวสาว */
+    color: #fff;
+}
+
+nav a {
+    color: #fff;
+    text-decoration: none;
+    margin-left: 20px;
+}
+
+/* Banner ใหญ่ๆ บนสุด */
+.hero-banner {
+    height: 110vh; /* ความสูงของรูปแบนเนอร์ (110% ของจอ) */
+    background-image: url('images\ \(1\).png'); /* เปลี่ยนเป็นรูปคู่บ่าวสาวตรงนี้ */
+    background-size: cover;
+    background-position: center;
+    position: relative;
+}
+
+.hero-overlay {
+    height: 100%;
+    background: rgba(0, 0, 0, 0.3); /* สีดำโปร่งแสงทับรูป ถ้าอยากให้มืดขึ้นเพิ่ม 0.3 เป็น 0.5 */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    text-align: center;
+}
+
+.hero-content h1 {
+    font-family: 'Dancing Script', cursive;
+    font-size: 70px; /* ขนาดชื่อในแบนเนอร์ */
+}
+
+/* ไทม์ไลน์ */
+.timeline-section {
+    padding: 80px 20px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.section-title {
+    text-align: center;
+    font-size: 25px;
+    color: #000000; /* สีหัวข้อไทม์ไลน์  */
+    margin-bottom: 50px;
+}
+
+.timeline-container {
+    position: relative;
+}
+
+.vertical-line {
+    position: absolute;
+    width: 2px;
+    background-color: #ddd; /* สีของเส้นแกนกลางไทม์ไลน์ */
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.timeline-item {
+    margin-bottom: 60px;
+    width: 50%;
+    position: relative;
+    padding: 0 30px;
+}
+
+.timeline-item.left { left: 0; text-align: right; }
+.timeline-item.right { left: 50%; text-align: left; }
+
+/* รูปภาพในไทม์ไลน์ */
+.timeline-img {
+    width: 50%; /* ให้รูปกว้างเต็มกล่อง */
+    height: auto;
+    border-radius: 15px; /* ความโค้งของมุมรูปภาพ */
+    margin-bottom: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.dot {
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    background-color: #fff;
+    border: 3px solid #FFB6C1;
+    border-radius: 50%;
+    top: 10px;
+    z-index: 5;
+}
+
+.left .dot { right: -8px; }
+.right .dot { left: -8px; }
+
+.time-tag {
+    background-color: #FFB6C1; /* สีพื้นหลังกล่องเวลา */
+    color: #fff;
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-size: 14px;
+    display: inline-block;
+    margin-bottom: 10px;
+}
+
+/* ปุ่มดูแผนที่ */
+.map-button {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 8px 15px;
+    background-color: #f0f0f0; /* สีพื้นหลังปุ่มแผนที่ */
+    color: #555;
+    text-decoration: none;
+    border-radius: 8px;
+    font-size: 13px;
+    border: 1px solid #ddd;
+    transition: 0.3s;
+}
+
+.map-button:hover {
+    background-color: #FFB6C1; /* สีเวลาเอาเม้าส์ไปวางบนปุ่มแผนที่ */
+    color: white;
+}
+
+/* ปุ่ม Google Form ล่างสุด */
+.registration-area {
+    text-align: center;
+    margin-top: 50px;
+    padding: 40px;
+    background-color: #fff5f7; /* สีพื้นหลังโซนลงทะเบียน */
+    border-radius: 20px;
+}
+
+.google-form-btn {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 15px 35px;
+    background-color: #FF7F50; /* สีส้มของปุ่มลงทะเบียน เปลี่ยนได้ตามใจชอบ */
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: 600;
+    border-radius: 50px;
+    box-shadow: 0 4px 15px rgba(255, 127, 80, 0.3);
+    transition: 0.3s;
+}
+
+.google-form-btn:hover {
+    transform: translateY(-3px); /* สั่งให้ปุ่มลอยขึ้นนิดนึงเวลาคนจะกด */
+    box-shadow: 0 6px 20px rgba(255, 127, 80, 0.4);
+}
+
+/* Footer ท้ายเว็บ */
+.custom-footer {
+    padding: 40px;
+    text-align: center;
+    background-color: #FFB6C1;
+    color: white;
+}
+
+/* สำหรับมือถือ (Responsive) */
+@media screen and (max-width: 768px) {
+    .vertical-line { left: 20px; }
+    .timeline-item { width: 100%; text-align: left; padding-left: 50px; }
+    .timeline-item.right { left: 0; }
+    .left .dot, .right .dot { left: 12px; }
+    .hero-content h1 { font-size: 45px; }
+}
+/* --- เพิ่ม CSS ส่วนนี้ต่อท้ายไฟล์ style.css --- */
+
+/* กล่องแม่สำหรับสไลด์โชว์ */
+.slideshow-container {
+    position: relative; /* สำคัญมาก! เพื่อให้รูปข้างในอ้างอิงตำแหน่งจากกล่องนี้ */
+    width: 100%;        /* กว้างเต็มพื้นที่ content-box */
+    height: 220px;      /* กำหนดความสูงตายตัว เพื่อให้รูปซ้อนกันได้พอดี */
+    overflow: hidden;   /* ซ่อนส่วนที่ล้น */
+    /* (Border-radius และ box-shadow จะได้รับมาจาก class .timeline-img ที่เราใส่ไว้แล้วใน HTML) */
+}
+
+/* รูปภาพแต่ละรูปข้างใน */
+.slideshow-container .slide {
+    position: absolute; /* สั่งให้รูปลอยซ้อนทับกัน */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;  /* บังคับให้รูปเต็มพื้นที่โดยไม่เบี้ยว */
+    opacity: 0;         /* เริ่มต้นให้โปร่งใส (มองไม่เห็น) */
+    transition: opacity 1s ease-in-out; /* สร้างเอฟเฟกต์ค่อยๆ จางตอนเปลี่ยนรูป (1 วินาที) */
+    z-index: 1;
+}
+
+/* รูปที่กำลังแสดงอยู่ */
+.slideshow-container .slide.active {
+    opacity: 1;         /* ให้มองเห็นได้ */
+    z-index: 2;         /* ให้อยู่ชั้นบนสุด */
+}
+/* ปุ่มลูกศร ซ้าย-ขวา */
+.prev, .next {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: auto;
+    padding: 10px;
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+    transition: 0.3s ease;
+    border-radius: 0 3px 3px 0;
+    user-select: none;
+    background-color: rgba(0,0,0,0.3);
+    border: none;
+    z-index: 10;
+}
+
+.next {
+    right: 0;
+    border-radius: 3px 0 0 3px;
+}
+
+.prev {
+    left: 0;
+}
+
+.prev:hover, .next:hover {
+    background-color: rgba(0,0,0,0.8);
+}
+
+/* จุดนำทาง (Dots) ด้านล่างรูป */
+.dot-container {
+    position: absolute;
+    bottom: 10px;
+    width: 100%;
+    text-align: center;
+    z-index: 10;
+}
+
+.nav-dot {
+    cursor: pointer;
+    height: 10px;
+    width: 10px;
+    margin: 0 5px;
+    background-color: rgba(255,255,255,0.5);
+    border-radius: 50%;
+    display: inline-block;
+    transition: 0.3s;
+}
+
+.nav-dot.active, .nav-dot:hover {
+    background-color: white;
+    transform: scale(1.2);
+}
+/* สำหรับจัดกลุ่มหัวข้อให้อยู่ตรงกลางและทับเส้น */
+.title-wrapper {
+    text-align: center;
+    position: relative;
+    z-index: 10; /* ให้สูงกว่าเส้น vertical-line */
+    margin-bottom: 40px;
+}
+
+.section-title.overlay-line {
+    display: inline-block; /* ให้พื้นหลังกว้างเท่ากับข้อความ */
+    background-color: #fef6f7; /* ***สำคัญ: ต้องเป็นสีเดียวกับพื้นหลัง body ของคุณ*** */
+    padding: 10px 30px; /* เพิ่มช่องว่างซ้ายขวาให้เส้นหายไปจากขอบข้อความนิดนึง */
+    position: relative;
+    margin-bottom: 0; /* เคลียร์ margin เดิม */
+}
+
+/* ถ้าอยากให้ข้อความดูพรีเมียมขึ้น */
+.section-title.overlay-line span {
+    display: block;
+    font-size: 0.6em;
+    color: #00acc1;
+    margin-top: 10px;
+}
+/* ข้อความส่วนบนสุด (กำหนดการงาน...) */
+.wedding-date {
+    font-family: 'Sarabun', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 400;
+    letter-spacing: 1px;
+    margin-bottom: 15px;
+}
+
+/* ชื่อจังหวัด Samutsakhon & Samutsongkhram */
+.hero-content h1 {
+    font-family: 'Playfair Display', serif; /* หรือใช้ 'Cinzel' ถ้าอยากได้อารมณ์หนักแน่น */
+    font-size: 4rem; /* ปรับขนาดตามความเหมาะสม */
+    font-style: italic; /* เพิ่มความหรูหราด้วยตัวเอียง */
+    text-transform: capitalize;
+    margin: 10px 0;
+    line-height: 1.2;
+}
+
+/* แนวคิด "สายน้ำสองสมุทร..." */
+.hero-content p:last-child {
+    font-family: 'Sarabun', sans-serif;
+    font-size: 1.3rem;
+    font-weight: 300;
+    opacity: 0.9;
+}
