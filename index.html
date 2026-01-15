@@ -3,47 +3,105 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>วันการศึกษาเอกชน 2569</title>
-    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;600&family=Playfair+Display:ital,wght@0,600;1,700&family=Prompt:wght@300;400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;600&family=Playfair+Display:ital,wght@0,600;1,700&family=Cinzel:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;600&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
-</head>
-<script>
-window.addEventListener('scroll', () => {
-    const header = document.querySelector('header');
-    header.classList.toggle('scrolled', window.scrollY > 80);
-});
+</head><script>
+    let slideTimers = []; // เก็บตัวแปร Timer ของแต่ละสไลด์
+
+    function initSlideshows() {
+        const slideshows = document.querySelectorAll('.slideshow-container');
+
+        slideshows.forEach((slideshow, index) => {
+            slideshow.setAttribute('data-index', 0); // เก็บค่าหน้าปัจจุบันไว้ที่ตัวกล่อง
+            showSlides(slideshow, 0);
+            autoSlide(slideshow);
+        });
+    }
+
+    // ฟังก์ชันแสดงรูปภาพตาม Index
+    function showSlides(container, slideIndex) {
+        const slides = container.querySelectorAll('.slide');
+        const dots = container.querySelectorAll('.nav-dot');
+
+        let current = slideIndex;
+        if (slideIndex >= slides.length) current = 0;
+        if (slideIndex < 0) current = slides.length - 1;
+
+        // ซ่อนทุกรูป
+        slides.forEach(s => s.classList.remove('active'));
+        if (dots.length > 0) dots.forEach(d => d.classList.remove('active'));
+
+        // แสดงรูปที่เลือก
+        slides[current].classList.add('active');
+        if (dots.length > 0) dots[current].classList.add('active');
+
+        container.setAttribute('data-index', current);
+    }
+
+    // ฟังก์ชันเมื่อกดปุ่มลูกศร
+    function changeSlide(btn, n) {
+        const container = btn.parentElement;
+        let currentIndex = parseInt(container.getAttribute('data-index'));
+        resetTimer(container); // หยุดเวลาเดิมและเริ่มใหม่
+        showSlides(container, currentIndex + n);
+    }
+
+    // ฟังก์ชันเมื่อกดที่จุด (Dots)
+    function currentSlide(dot, n) {
+        const container = dot.parentElement.parentElement;
+        resetTimer(container);
+        showSlides(container, n);
+    }
+
+    // ระบบเล่นอัตโนมัติ
+    function autoSlide(container) {
+        let timer = setInterval(() => {
+            let currentIndex = parseInt(container.getAttribute('data-index'));
+            showSlides(container, currentIndex + 1);
+        }, 5000); // เปลี่ยนรูปทุก 5 วินาที
+
+        container.setAttribute('data-timer-id', timer);
+    }
+
+    // รีเซ็ตเวลาเมื่อมีการกดมือ
+    function resetTimer(container) {
+        let oldTimer = container.getAttribute('data-timer-id');
+        clearInterval(oldTimer);
+        autoSlide(container);
+    }
+
+    document.addEventListener('DOMContentLoaded', initSlideshows);
 </script>
 
+</body> </html>
 <body>
 
     <header>
         <div class="logo"></div>
         <nav>
-            <a href="#registers">ลงทะเบียน</a>
-            <a href="#timeline13">วันที่ 13</a>
-            <a href="#day14">วันที่ 14</a>
+  	   	<a href="#registers">ลงทะเบียน</a>
+		<a href="#timeline">กำหนดการวันที่ 13</a>
+		<a href="#day14">กำหนดการวันที่ 14</a>
         </nav>
     </header>
 
-    <section class="hero-banner">
-        <div class="hero-overlay">
-            <div class="hero-content">
-                <h2 class="wedding-date">กำหนดการงานวันการศึกษาเอกชน ภาคกลาง ครั้งที่ 10 ประจำปี 2569</h2>
-                <h1>Samutsakhon <span style="font-family: 'Sarabun'; font-style: normal; font-size: 0.7em;">&</span> Samutsongkhram</h1>
-                <h2>ภายใต้แนวคิด <strong>"สายน้ำสองสมุทร รุดหน้าการศึกษา สร้างสรรค์พัฒนา คุณค่าที่ยั่งยืน"</strong></h2>
-            </div>
+   <section class="hero-banner">
+    <div class="hero-overlay">
+        <div class="hero-content">
+            <p class="wedding-date">กำหนดการงานวันการศึกษาเอกชน ภาคกลาง ครั้งที่ 10 ประจำปี 2569</p>
+            <h1>Samutsakhon <span style="font-family: 'Sarabun'; font-style: normal; font-size: 0.7em;">&</span> Samutsongkhram</h1>
+            <p>ภายใต้แนวคิด <strong>"สายน้ำสองสมุทร รุดหน้าการศึกษา สร้างสรรค์พัฒนา คุณค่าที่ยั่งยืน"</strong></p>
         </div>
-    </section>
+    </div>
+</section>
 
-    <section id="timeline13" class="timeline-section">
-        <div class="title-wrapper">
-            <h2 class="section-title overlay-line">
-                กำหนดการงานวันการศึกษาเอกชน ภาคกลาง ครั้งที่ 10 ประจำปี 2569
-ภายใต้แนวคิด "สายน้ำสองสมุทร รุดหน้าการศึกษา สร้างสรรค์พัฒนา คุณค่าที่ยั่งยืน"<br>
-โรงแรม แกรนด์ อินเตอร์ โฮเทล ณ จังหวัดสมุทรสาคร<br>
-วันที่ 13 กุมภาพันธ์ 2569<br>
-            </h2>
-        </div>
+    <section id="timeline" class="timeline-section">
+        <h2 class="section-title">กำหนดการงานวันการศึกษาเอกชน  ภาคกลาง ครั้งที่ 10 ประจำปี 2569 <br>
+ภายใต้แนวคิด "สายน้ำสองสมุทร รุดหน้าการศึกษา สร้างสรรค์พัฒนา คุณค่าที่ยั่งยืน" <br>
+โรงแรม แกรนด์ อินเตอร์ โฮเทล ณ จังหวัดสมุทรสาคร <br>
+วันที่ 13 กุมภาพันธ์ 2569
+</h2>
 
         <div class="timeline-container">
             <div class="vertical-line"></div>
@@ -51,10 +109,13 @@ window.addEventListener('scroll', () => {
             <div class="timeline-item left">
                 <div class="dot"></div>
                 <div class="content-box">
-                    <div class="time-tag">13.00-14.00 น.</div>
-                    <h4>รายงานตัวเข้าที่พัก</h4>
-                    <p>โรงแรม แกรนด์ อินเตอร์ โฮเทล</p>
-                    <a href="https://maps.app.goo.gl/gFmYB5v2bgv7cRNj9?g_st=ac" class="map-button">📍 ดูตำแหน่งที่ตั้ง</a>
+                    <div class="time-tag">13.00-14.00 น. </div>
+            <h4>"รายงานตัวเข้าที่พัก ณโรงแรม แกรนด์ อินเตอร์ โฮเทล"</h4>
+ <h5> โทรศัพท์โรงแรม : 099-9498889 และ 084-2456391</h5> <br>
+ <h5> ติดต่อกับผู้ประสานงานโดยตรงได้ที่ </h5>
+ <h5> รองผู้อำนวยการ นางสาวสมพิศ รุ่งเรืองสาคร</h5> 
+ <h5> โทรศัพท์ :  088-2945957</h5> <br>     
+                    <a href="https://maps.app.goo.gl/gFmYB5v2bgv7cRNj9?g_st=ac" target="_blank" class="map-button">📍 ดูตำแหน่งที่ตั้ง</a>
                 </div>
             </div>
 
@@ -62,15 +123,22 @@ window.addEventListener('scroll', () => {
                 <div class="dot"></div>
                 <div class="content-box">
                     <div class="time-tag">14.00-14.40 น.</div>
-                    <div class="slideshow-container timeline-img">
-                        <img src="s1.jpg" class="slide active">
-                        <img src="s2.jpg" class="slide">
-                        <img src="s3.jpg" class="slide">
-                        <button class="prev" onclick="changeSlide(this, -1)">❮</button>
-                        <button class="next" onclick="changeSlide(this, 1)">❯</button>
-                    </div>
-                    <h3>ศาลพันท้ายนรสิงห์</h3>
-                    <a href="https://maps.app.goo.gl/bxDtfYYuGqPhJcGz9?g_st=acs" class="map-button">📍 ดูตำแหน่งที่ตั้ง</a>
+                       <div class="slideshow-container timeline-img">
+    <img src="s1.jpg" alt="ศาลพันท้ายนรสิงห์ 1" class="slide active">
+    <img src="s2.jpg" alt="ศาลพันท้ายนรสิงห์ 2" class="slide">
+    <img src="s3.jpg" alt="ศาลพันท้ายนรสิงห์ 3" class="slide">
+
+    <button class="prev" onclick="changeSlide(this, -1)">&#10094;</button>
+    <button class="next" onclick="changeSlide(this, 1)">&#10095;</button>
+
+    <div class="dot-container">
+        <span class="nav-dot active" onclick="currentSlide(this, 0)"></span>
+        <span class="nav-dot" onclick="currentSlide(this, 1)"></span>
+        <span class="nav-dot" onclick="currentSlide(this, 2)"></span>
+    </div>
+</div>
+                    <h3>นมัสการศาลพันท้ายนรสิงห์</h3>
+                    <a href="https://maps.app.goo.gl/bxDtfYYuGqPhJcGz9?g_st=ac" target="_blank" class="map-button">📍 ดูตำแหน่งที่ตั้ง</a>
                 </div>
             </div>
 
@@ -79,14 +147,21 @@ window.addEventListener('scroll', () => {
                 <div class="content-box">
                     <div class="time-tag">14.40-15.20 น.</div>
                     <div class="slideshow-container timeline-img">
-                        <img src="r2.jpg" class="slide active">
-                        <img src="r3.jpg" class="slide">
-                        <img src="r4.jpg" class="slide">
-                        <button class="prev" onclick="changeSlide(this, -1)">❮</button>
-                        <button class="next" onclick="changeSlide(this, 1)">❯</button>
-                    </div>
+    <img src="r2.jpg" alt="สะพานแดง 1" class="slide active">
+    <img src="r3.jpg" alt="สะพานแดง 2" class="slide">
+    <img src="r4.jpg" alt="สะพานแดง 3" class="slide">
+
+    <button class="prev" onclick="changeSlide(this, -1)">&#10094;</button>
+    <button class="next" onclick="changeSlide(this, 1)">&#10095;</button>
+
+    <div class="dot-container">
+        <span class="nav-dot active" onclick="currentSlide(this, 0)"></span>
+        <span class="nav-dot" onclick="currentSlide(this, 1)"></span>
+        <span class="nav-dot" onclick="currentSlide(this, 2)"></span>
+    </div>
+</div>
                     <h3>สะพานแดง</h3>
-                     <a href="https://maps.app.goo.gl/1K5em97oXp4JeYx88?g_st=ac" class="map-button">📍 ดูตำแหน่งที่ตั้ง</a>
+                    <a href="https://maps.app.goo.gl/1K5em97oXp4JeYx88?g_st=ac" target="_blank" class="map-button">📍 ดูตำแหน่งที่ตั้ง</a>
                 </div>
             </div>
 
@@ -95,71 +170,71 @@ window.addEventListener('scroll', () => {
                 <div class="content-box">
                     <div class="time-tag">15.20-16.00 น.</div>
                     <div class="slideshow-container timeline-img">
-                        <img src="w1.jpg" class="slide active">
-                        <img src="w2.jpg" class="slide">
-                        <img src="w3.jpg" class="slide">
-                        <button class="prev" onclick="changeSlide(this, -1)">❮</button>
-                        <button class="next" onclick="changeSlide(this, 1)">❯</button>
-                    </div>
+    <img src="w1.jpg" alt="ศาลเจ้าพระหยกขาว 1" class="slide active">
+    <img src="w3.jpg" alt="ศาลเจ้าพระหยกขาว 2" class="slide">
+    <img src="w4.jpg" alt="ศาลเจ้าพระหยกขาว 3" class="slide">
+
+    <button class="prev" onclick="changeSlide(this, -1)">&#10094;</button>
+    <button class="next" onclick="changeSlide(this, 1)">&#10095;</button>
+
+    <div class="dot-container">
+        <span class="nav-dot active" onclick="currentSlide(this, 0)"></span>
+        <span class="nav-dot" onclick="currentSlide(this, 1)"></span>
+        <span class="nav-dot" onclick="currentSlide(this, 2)"></span>
+    </div>
+</div>
                     <h3>ศาลเจ้าพระหยกขาว</h3>
-                     <a href="https://maps.app.goo.gl/yUhxiNuNWFzrNQYo8?g_st=ac" class="map-button">📍 ดูตำแหน่งที่ตั้ง</a>
+                    <a href="https://maps.app.goo.gl/yUhxiNuNWFzrNQYo8?g_st=ac" target="_blank" class="map-button">📍 ดูตำแหน่งที่ตั้ง</a>
                 </div>
             </div>
-            <div class="timeline-item left">
+         <div class="timeline-item left">
                 <div class="dot"></div>
                 <div class="content-box">
                     <div class="time-tag">16.00-18.00 น.</div>
                     <h3>พักผ่อนตามอัธยาศัย</h3>
                 </div>
             </div>
-            <div class="timeline-item right">
+ <div class="timeline-item right">
                 <div class="dot"></div>
                 <div class="content-box">
                     <div class="time-tag">18.00-18.30 น.</div>
   <h3>"รายงานตัวเข้างานเลี้ยง สายน้ำสองสมุทร"</h3> <br>
                     <h3>● รับฟังการบรรเลงดนตรีจากโรงเรียนเอกชนนอกระบบจังหวัดสมุทรสาครจากโรงเรียนดนตรีโซนาต้า</h3> <br>
-<h3>● ศึกษาธิการจังหวัดสมุทรสาคร กล้าวต้อนรับแขกผู้มีเกียรติ </h3><br>
+<h3>● ศึกษาธิการจังหวัดสมุทรสาคร กล่าวต้อนรับแขกผู้มีเกียรติ </h3><br>
 <h3>● ชมการแสดงของนักเรียนโรงเรียนเอกชนจังหวัดสมุทรสาคร</h3>
 
 <p>ชุดที่ 1 ชื่อชุดการแสดง สรรเสริญภูผามนตรา <br>
 <br>
 </h3>
-     <h3>● ชมการแสดงของนักเรียนโรงเรียนเอกชนจังหวัดสมุทรสาคร</h3>
-<p>ชุดที่ 1 : สรรเสริญภูผามนตรา</p>
-
-<h3>● ชมการแสดงของนักเรียนโรงเรียนเอกชนนอกระบบจังหวัดสมุทรสงคราม</h3>
-<p>ชุดที่ 1 : Thai Modern Massage</p>
-<p>ชุดที่ 2 : Thai Sappaya Massage</p>
-<h3>● รับฟังการบรรเลงดนตรีจากโรงเรียนดนตรีโซนาต้า โรงเรียนเอกชนนอกระบบจังหวัดสมุทรสาคร</h3>
-
+                   <h3> <p>● ชมการแสดงของนักเรียนโรงเรียนเอกชนนอกระบบจังหวัดสมุทรสงคราม </h3>
+ชุดที่ 1 thai modern massage <br>
+ชุดที่ 2  thai sappaya massage <br><br>
+ <h3>● รับฟังการบรรเลงดนตรีจากโรงเรียนดนตรีโซนาต้า โรงเรียนเอกชนนอกระบบจังหวัดสมุทรสาคร</h3>
+</p>
                 </div>
             </div>
-            <div class="timeline-item left">
+ <div class="timeline-item left">
                 <div class="dot"></div>
                 <div class="content-box">
                     <div class="time-tag">21.00 น.</div>
                     <h3>ปิดงาน</h3>
                 </div>
             </div>
-        </div>
-    </section>
+        <div id="register" class="registration-area">
+ <section id="day14" class="timeline-section">
+    <div class="timeline-container">
+        <div class="vertical-line"></div>
 
-    <section id="day14" class="timeline-section">
         <div class="title-wrapper">
-    <h2 class="section-title overlay-line">
-        กำหนดการงานวันการศึกษาเอกชน ภาคกลาง ครั้งที่ 10 ประจำปี 2569 <br>
-        "สายน้ำสองสมุทร รุดหน้าการศึกษา สร้างสรรค์พัฒนา คุณค่าที่ยั่งยืน" <br>
-        ณ โรงเรียนสามชัยวิเทศศึกษา จังหวัดสมุทรสาคร <br>
-        วันที่ 14 กุมภาพันธ์ 2569
-    </h2>
-</div>
-<br>
+            <h2 class="section-title overlay-line">
+                กำหนดการงานวันการศึกษาเอกชน ภาคกลาง ครั้งที่ 10 ประจำปี 2569 <br>
+                <small>"สายน้ำสองสมุทร รุดหน้าการศึกษา สร้างสรรค์พัฒนา คุณค่าที่ยั่งยืน"</small> <br>
+                ณ โรงเรียนสามชัยวิเทศศึกษา จังหวัดสมุทรสาคร <br>
+                วันที่ 14 กุมภาพันธ์ 2569
             </h2>
         </div>
 
-        <div class="timeline-container">
-            <div class="vertical-line"></div>
-<div class="timeline-item left">
+        <div class="timeline-item left">
             <div class="dot"></div>
             <div class="content-box">
                 <div class="time-tag">08.00-08.30 น.</div>
@@ -168,14 +243,16 @@ window.addEventListener('scroll', () => {
                 <a href="https://maps.app.goo.gl/Dp1mjeTvt71Syejg9?g_st=ac" class="map-button">📍 ดูตำแหน่งที่ตั้ง</a>
             </div>
         </div>
+
+        </div>
+</section>
             <div class="timeline-item right">
                 <div class="dot"></div>
                 <div class="content-box">
                     <div class="time-tag">08.30-09.00 น.</div>
-                    <p>● การแสดงชุดที่ 1 เพชรแห่งนาข้าว เกลือแห่งหัวใจ</p>
-                    <p>● การแสดงชุดที่ 2 จินตลีลาหนึ่งหยาดเพชรในร้อย</p>
-                    <a href="https://maps.app.goo.gl/Dp1mjeTvt71Syejg9?g_st=ac" class="map-button">📍 ดูตำแหน่งที่ตั้ง</a>
-
+                    <h3>การแสดงพิธีเปิด ภายใต้แนวคิด </h3>
+ 		    <h3>“สายน้ำสองสมุทร รุดหน้าการศึกษา </h3>
+		      <h3>  สร้างสรรค์พัฒนา คุณค่าที่ยั่งยืน”</h3>
                 </div>
             </div>
 
@@ -188,107 +265,50 @@ window.addEventListener('scroll', () => {
 			<p>● ร่วมร้องเพลงสรรเสริญพระบารมี <br>
 			<p>● ถวายความอาลัยแด่สมเด็จพระพันปีหลวง <br>
 			<p>● ผู้ว่าราชการจังหวัด กล่าวต้อนรับ เลขาธิการ  สช. และแขกผู้มีเกียรติ <br>
-			<p>● กล่าวรายงาน การจัดงานวันการศึกษาเอกชน ภาคกลาง ครั้งที่ 10  ประจำปี 2569 โดย นาย มณฑล  ภาคสุวรรณ์  เลขาธิการ สช.<br>
-                </div>
-
-                </div>
-            
- <div class="timeline-item right">
-                <div class="dot"></div>
-                <div class="content-box">
-                    <div class="time-tag">09.30-10.00 น.</div>
-                    <p>● การแสดงชุดที่ 3 สายน้ำสองสมุทร</p>
-			<p>● การแสดงชุดที่ 4 ของดีสองสมุทร</p>
-                </div>
-            </div>
-    
-         <div class="timeline-item left">
-                <div class="dot"></div>
-                <div class="content-box">
-                    <div class="time-tag">10.00-11.30 น.</div>
-                    <p>พิธีมอบโล่รางวัล ยกย่อง เชิดชูเกียรติ ผู้บริหารโรงเรียน ครู นักเรียน เจ้าหน้าที่และผู้ทำคุณประโยชน์ต่อการศึกษา
-</p>
+			<p>● กล่าวรายงาน การจัดงานวันการศึกษาเอกชน ภาคกลาง ครั้งที่ 10  ประจำปี 2569 โดย ผศ.ดร.ศุภเสฏฐ์ คณากูล นายกสมาคม คณะกรรมการประสานและส่งเสริมการศึกษาเอกชน<br>
+			<p>● กล่าวเปิดงาน “การจัดงานวันการศึกษาเอกชน ภาคกลาง ครั้งที่๑๐” ประจำปี ๒๕๖๙ โดย นายมณฑล ภาคสุวรรณ์ เลขาธิการ สช.<br>
                 </div>
             </div>
 
             <div class="timeline-item right">
                 <div class="dot"></div>
                 <div class="content-box">
-                    <div class="time-tag">11.30-12.00 น.</div>
-                    <h4>พิธีมอบธงเจ้าภาพ</h4>
-                    <p>ส่งมอบธงให้แก่จังหวัดเพชรบุรี (เจ้าภาพครั้งที่ 11)</p>
+                    <div class="time-tag">09.30-11.00 น.</div>
+                    <h3>พิธีมอบโล่รางวัล ยกย่อง เชิดชูเกียรติ ผู้บริหารโรงเรียน ครู นักเรียนเจ้าหน้าที่และผู้ทำคุณประโยชน์ต่อการศึกษา</h3>
                 </div>
             </div>
-
-           
-
-<div class="timeline-item left">
+         <div class="timeline-item left">
                 <div class="dot"></div>
                 <div class="content-box">
-                    <div class="time-tag">12.00-12.30 น.</div>
-                    <p>"เสร็จพิธี ท่านประธานและแขกผู้มีเกียรติเดินชชมบูธนิทรรศการนักเรียนและร้านค้าชุมชนของดีสองสมุทร"</p>
+                    <div class="time-tag">11.00-11.30 น.</div>
+                    <h3>พิธีมอบธง การจัดงานวันการศึกษาเอกชนภาคกลางครั้งที่ ๑๑ ประจำปี ๒๕๗๐ 	ให้กับเจ้าภาพครั้งต่อไปได้แก่จังหวัดเพชรบุรี </h3>
                 </div>
             </div>
  <div class="timeline-item right">
                 <div class="dot"></div>
                 <div class="content-box">
-                    <div class="time-tag">12.30 น.</div>
+                    <div class="time-tag">11.30-12.00 น.</div>
+                    <h3>เสร็จพิธี ท่านประธานและแขกผู้มีเกียรติเดินชมบูธนิทรรศการนักเรียน  และร้านค้าชุมชนของดีสองสมุทร </h3> <br>
+                </div>
+            </div>
+ <div class="timeline-item left">
+                <div class="dot"></div>
+                <div class="content-box">
+                    <div class="time-tag">12.00 น.</div>
                     <h3>"รับประทานอาหารกลางวัน"</h3>
                 </div>
             </div>
 
- 
-            <div id="registers" class="registration-area">
-                <p>เพื่อความสะดวกในการเตรียมงาน กรุณาลงทะเบียน</p>
-                <a href="https://docs.google.com/forms/d/e/1FAIpQLSeHwHEWPLb1uaMdL80FAWmzrGboNGr14vSY6qmgyaGouWqhiw/viewform" target="_blank" class="google-form-btn">📝 ลงทะเบียนเข้าร่วมงาน</a>
-            </div>
-        </div>
-        </div>
     </section>
-
+ <div id="registers" class="registration-area">
+            <p>เพื่อความสะดวกในการเตรียมงาน กรุณาลงทะเบียน</p>
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSeHwHEWPLb1uaMdL80FAWmzrGboNGr14vSY6qmgyaGouWqhiw/viewform" target="_blank" class="google-form-btn">📝 ลงทะเบียนเข้าร่วมงาน </a>
+        </div>
     <footer class="custom-footer">
-        <p>หมายเหตุ : กำหนดการนี้อาจเปลี่ยนแปลงได้ตามความเหมาะสม</p>
+        <p>หมายเหตุ : กำหนดการนี้อาจเปลี่ยนแปลงได้ตามความเหมาะสม</p><br>
+ <p>การแต่งกาย : ชุดโทนสีสุภาพ </p>
     </footer>
 
-
-
-    <script>
-        function initSlideshows() {
-            const slideshows = document.querySelectorAll('.slideshow-container');
-            slideshows.forEach(slideshow => {
-                slideshow.setAttribute('data-index', 0);
-                showSlides(slideshow, 0);
-                autoSlide(slideshow);
-            });
-        }
-        function showSlides(container, slideIndex) {
-            const slides = container.querySelectorAll('.slide');
-            if (slides.length === 0) return;
-            let current = slideIndex;
-            if (slideIndex >= slides.length) current = 0;
-            if (slideIndex < 0) current = slides.length - 1;
-            slides.forEach(s => s.classList.remove('active'));
-            slides[current].classList.add('active');
-            container.setAttribute('data-index', current);
-        }
-        function changeSlide(btn, n) {
-            const container = btn.parentElement;
-            let currentIndex = parseInt(container.getAttribute('data-index'));
-            // เคลียร์ Timer เก่าก่อนเริ่มใหม่
-            const oldTimer = container.getAttribute('data-timer-id');
-            if(oldTimer) clearInterval(parseInt(oldTimer));
-            
-            showSlides(container, currentIndex + n);
-            autoSlide(container);
-        }
-        function autoSlide(container) {
-            let timer = setInterval(() => {
-                let currentIndex = parseInt(container.getAttribute('data-index'));
-                showSlides(container, currentIndex + 1);
-            }, 5000);
-            container.setAttribute('data-timer-id', timer);
-        }
-        document.addEventListener('DOMContentLoaded', initSlideshows);
-    </script>
 </body>
 </html>
+
