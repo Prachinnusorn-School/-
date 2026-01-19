@@ -364,52 +364,51 @@ header.scrolled nav a {
     background: #f6f8fb;
     border-top: 1px solid #e3e7ec;
 }
+/* ==========================================
+   FORCE DESKTOP LAYOUT ON MOBILE
+   ========================================== */
 
-/* ==================================================
-   MOBILE
-   ================================================== */
+/* ยกเลิก responsive timeline บนมือถือ */
 @media (max-width: 768px) {
+
+    body {
+        overflow-x: auto;
+    }
+
+    .timeline-section,
+    header,
+    .hero-banner {
+        min-width: 1200px; /* ความกว้าง Desktop */
+    }
+
+    /* ปิดการเปลี่ยน timeline เป็นคอลัมน์เดียว */
+    .timeline-item {
+        width: 50%;
+        padding: 0 30px;
+    }
+
+    .timeline-item.right {
+        left: 50%;
+    }
+
+    .timeline-item.left {
+        left: 0;
+        text-align: right;
+    }
 
     .vertical-line {
-        left: 25px;
-        transform: none;
+        left: 50%;
+        transform: translateX(-50%);
     }
 
-    .timeline-item {
-        width: 100%;
-        left: 0 !important;
-        padding-left: 70px;
-        padding-right: 20px;
-        text-align: left !important;
+    .left .dot {
+        right: -8px;
+        left: auto;
     }
 
-    .dot {
-        left: 18px !important;
-        right: auto;
-    }
-
-    .registration-area {
-        margin-top: 50px;
-        padding: 32px 22px;
-        border-radius: 20px;
-    }
-
-    .google-form-btn {
-        width: 100%;
-        justify-content: center;
+    .right .dot {
+        left: -8px;
     }
 }
-@media (max-width: 768px) {
 
-    header {
-        padding: 0 20px;
-    }
 
-    nav {
-        gap: 16px;
-    }
-
-    nav a {
-        font-size: 0.85rem;
-    }
-}
